@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser, checkEmail } from "../../../_actions/user_action";
+import { registerUser } from "../../../_actions/user_action";
 import styled from "styled-components";
 import Auth from "../../../hoc/auth";
 
