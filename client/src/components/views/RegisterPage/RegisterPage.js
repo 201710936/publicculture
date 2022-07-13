@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../../_actions/user_action";
+import { registerUser, checkEmail } from "../../../_actions/user_action";
 import styled from "styled-components";
 import Auth from "../../../hoc/auth";
 
@@ -43,31 +43,8 @@ const Input_Name = styled.input`
   }
 `;
 
-const Input_Nickname = styled.input`
-  width: 400px;
-  height: 50px;
-  border: 1px solid lightgrey;
-  outline: none;
-  margin: 20px 0px 10px 0px;
-  padding-left: 10px;
-  &:focus {
-    border: 1px solid grey;
-  }
-`;
 
-const NicknameCheckBtn = styled.button`
-  width: 413px;
-  height: 50px;
-  background-color: black;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 15px;
-  &:hover {
-    cursor: pointer;
-  }
-  margin: 5px 0px 20px 0px;
-`;
+
 
 const Input_Email = styled.input`
   width: 400px;
@@ -131,10 +108,17 @@ const Register_btn = styled.button`
   margin-top: 20px;
 `;
 
+const ErrMsg = styled.h3`
+  color: firebrick;
+  font-size: 14px;
+  font-weight: 400;
+`;
+let conditionErrMessage = null;
+
 function RegisterPage() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [Nickname, setNickname] = useState("");
+
   const [Name, setName] = useState("");
   const [ConfirmPW, setConfirmPW] = useState("");
 
@@ -153,6 +137,7 @@ function RegisterPage() {
   const onChangeConfirmPW = (e) => {
     setConfirmPW(e.target.value);
   };
+
 
   const onSubmitHandler = (e) => {
     e.preventDefault(); //refresh 안 시킴
@@ -174,10 +159,21 @@ function RegisterPage() {
       if (res.payload.success) {
         navigate("/login");
       } else {
-        alert("Failed to sign up!");
+        console.log(res.payload);
+        cleanInput();
       }
     });
   };
+
+  const cleanInput = () => {
+    conditionErrMessage = <ErrMsg>이미 존재하는 이메일입니다.</ErrMsg>
+    setEmail('');
+    setPassword('');
+    setConfirmPW('');
+    if (Email !== '') {
+      conditionErrMessage = <span></span>;
+    }
+  }
 
   return (
     <div
@@ -204,7 +200,7 @@ function RegisterPage() {
             onChange={onChangeEmail}
             placeholder="이메일"
           />
-          <EmailCheckBtn>이메일 중복 확인</EmailCheckBtn>
+          {conditionErrMessage}
           <Input_PW
             type="password"
             value={Password}
@@ -217,13 +213,7 @@ function RegisterPage() {
             onChange={onChangeConfirmPW}
             placeholder="비밀번호 확인"
           />
-          <Input_Nickname
-            type="text"
-            value={Nickname}
-            onChange={onChangeName}
-            placeholder="닉네임"
-          />
-          <NicknameCheckBtn>닉네임 중복 확인</NicknameCheckBtn>
+          
           <Register_btn>회원가입</Register_btn>
         </Register_form_container>
       </Register_page_container>
