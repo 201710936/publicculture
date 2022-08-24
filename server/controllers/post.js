@@ -1,7 +1,7 @@
-const { Post } = require('../schemas/Post');
-const dayjs = require('dayjs');
-const mongoose = require('mongoose');
-const { googleSearch } = require('../utils/googleSearch');
+const { Post } = require("../schemas/Post");
+const dayjs = require("dayjs");
+const mongoose = require("mongoose");
+const { googleSearch } = require("../utils/googleSearch");
 
 //랜덤 post 가져오기
 exports.getRandomPost = async (req, res) => {
@@ -13,7 +13,7 @@ exports.getRandomPost = async (req, res) => {
   }
   //날짜 포맷 설정
   let today = dayjs();
-  let d_t = today.format('YYYY-MM-DD h:mm:ss');
+  let d_t = today.format("YYYY-MM-DD h:mm:ss");
   //현재 날짜에서 종료일이 더 후인 행사 return
   try {
     const posts = await Post.find({ end_date: { $gte: d_t } });
@@ -39,6 +39,7 @@ exports.getPostBySearch = async (req, res) => {
       $or: [
         { codename: { $regex: searchRegex } },
         { title: { $regex: searchRegex } },
+        { guname: { $regex: searchRegex } },
       ],
     }).exec();
     return res.status(200).json({ success: true, posts });
@@ -53,9 +54,9 @@ exports.getPostDetails = async (req, res) => {
   try {
     //db id 로 가져옴
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).send('No post with that id');
+      return res.status(404).send("No post with that id");
     }
-    const post = await Post.findById(id).populate('comments');
+    const post = await Post.findById(id).populate("comments");
     return res.status(200).json({ success: true, post });
   } catch (error) {
     return res.status(404).json({ success: false, error });
@@ -67,10 +68,10 @@ exports.likePost = async (req, res) => {
   try {
     const { id } = req.params;
     if (!req.user) {
-      return res.status(404).json({ message: '로그인이 필요합니다.' });
+      return res.status(404).json({ message: "로그인이 필요합니다." });
     }
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({ message: 'No post with that id' });
+      return res.status(404).json({ message: "No post with that id" });
     }
     const post = await Post.findById(id).exec();
     //post에 like를 눌렀나 ( req.user._id ( ObjectId -> String ))

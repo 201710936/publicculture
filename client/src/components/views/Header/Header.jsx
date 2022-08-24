@@ -13,14 +13,14 @@ import {
   GenreBar,
   GenreBtn,
   HeaderBtn,
-} from './HeaderElements';
-
+} from "./HeaderElements";
 
 function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [Login, setLogin] = useState(true);
+  const [gumane, setGuname] = useState("");
 
   const onLogoClicked = () => {
     navigate("/");
@@ -55,14 +55,15 @@ function Header() {
       } else {
         setLogin(true);
       }
-    })
-  }
+    });
+  };
 
   const onGenreClicked = (e) => {
     e.preventDefault();
     let name = e.target.name;
     dispatch(searchPost(name)).then((res) => {
       if (res.payload.success) {
+        console.log(res);
         navigate(`showevent/${name}`, { state: { infos: res.payload } });
       }
     });
@@ -106,30 +107,39 @@ function Header() {
           </Button>
         </SearchBarArea>
         <MenuContainer>
-
-          {
-            Login
-              ?
-              <>
-                <HeaderBtn onClick={onMypageClicked}>My page</HeaderBtn>
-                <HeaderBtn onClick={logOut}>Logout</HeaderBtn>
-              </>
-              :
-              <>
-                <HeaderBtn onClick={onLoginbtnClicked}>Login</HeaderBtn>
-                <HeaderBtn onClick={onRegiterClicked}>Register</HeaderBtn>
-              </>
-          }
+          {Login ? (
+            <>
+              <HeaderBtn onClick={onMypageClicked}>My page</HeaderBtn>
+              <HeaderBtn onClick={logOut}>Logout</HeaderBtn>
+            </>
+          ) : (
+            <>
+              <HeaderBtn onClick={onLoginbtnClicked}>Login</HeaderBtn>
+              <HeaderBtn onClick={onRegiterClicked}>Register</HeaderBtn>
+            </>
+          )}
         </MenuContainer>
       </HeaderContainer>
 
-      <GenreBar itemType="button" onClick={onGenreClicked}>
-        <GenreBtn name="뮤지컬">뮤지컬/오페라</GenreBtn>
-        <GenreBtn name="전시">전시/미술</GenreBtn>
-        <GenreBtn name="연극">연극</GenreBtn>
-        <GenreBtn name="콘서트">콘서트</GenreBtn>
-        <GenreBtn name="클래식">클래식</GenreBtn>
-        <GenreBtn name="무용">무용</GenreBtn>
+      <GenreBar>
+        <GenreBtn itemType="button" onClick={onGenreClicked} name="뮤지컬">
+          뮤지컬/오페라
+        </GenreBtn>
+        <GenreBtn itemType="button" onClick={onGenreClicked} name="전시">
+          전시/미술
+        </GenreBtn>
+        <GenreBtn itemType="button" onClick={onGenreClicked} name="연극">
+          연극
+        </GenreBtn>
+        <GenreBtn itemType="button" onClick={onGenreClicked} name="콘서트">
+          콘서트
+        </GenreBtn>
+        <GenreBtn itemType="button" onClick={onGenreClicked} name="클래식">
+          클래식
+        </GenreBtn>
+        <GenreBtn itemType="button" onClick={onGenreClicked} name="무용">
+          무용
+        </GenreBtn>
       </GenreBar>
     </>
   );
