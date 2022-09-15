@@ -148,26 +148,28 @@ const Header = () => {
             onClick={onSidebarToggleButtonClicked}
           ></i>
         </SidebarButtonToggle>
-        <GenreBar>
-          <GenreBtn itemType="button" onClick={onGenreClicked} name="뮤지컬">
-            뮤지컬/오페라
-          </GenreBtn>
-          <GenreBtn itemType="button" onClick={onGenreClicked} name="전시">
-            전시/미술
-          </GenreBtn>
-          <GenreBtn itemType="button" onClick={onGenreClicked} name="연극">
-            연극
-          </GenreBtn>
-          <GenreBtn itemType="button" onClick={onGenreClicked} name="콘서트">
-            콘서트
-          </GenreBtn>
-          <GenreBtn itemType="button" onClick={onGenreClicked} name="클래식">
-            클래식
-          </GenreBtn>
-          <GenreBtn itemType="button" onClick={onGenreClicked} name="무용">
-            무용
-          </GenreBtn>
-        </GenreBar>
+        <GenreContainer>
+          <GenreBar>
+            <GenreBtn itemType="button" onClick={onGenreClicked} name="뮤지컬">
+              뮤지컬/오페라
+            </GenreBtn>
+            <GenreBtn itemType="button" onClick={onGenreClicked} name="전시">
+              전시/미술
+            </GenreBtn>
+            <GenreBtn itemType="button" onClick={onGenreClicked} name="연극">
+              연극
+            </GenreBtn>
+            <GenreBtn itemType="button" onClick={onGenreClicked} name="콘서트">
+              콘서트
+            </GenreBtn>
+            <GenreBtn itemType="button" onClick={onGenreClicked} name="클래식">
+              클래식
+            </GenreBtn>
+            <GenreBtn itemType="button" onClick={onGenreClicked} name="무용">
+              무용
+            </GenreBtn>
+          </GenreBar>
+        </GenreContainer>
       </SidebarGenreBox>
       {/* <GenreContainer>
         <GenreBar itemType="button" onClick={onGenreClicked}>

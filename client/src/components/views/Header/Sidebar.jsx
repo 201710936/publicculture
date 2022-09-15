@@ -77,30 +77,30 @@ const Sidebar = ({ onSidebarToggleButtonClicked }) => {
   const [search, setSearch] = useState("");
   const [name, setName] = useState("");
 
-  const onLocationClicked = (e) => {
-    e.preventDefault();
-    let name = e.target.name;
-    dispatch(searchPost(name)).then((res) => {
-      if (res.payload.success) {
-        console.log(res);
-        navigate(`showevent/${name}`, { state: { infos: res.payload } });
-      } else {
-        return new Response({ error: "error!" });
-      }
-    });
-  };
+  // const onLocationClicked = (e) => {
+  //   e.preventDefault();
+  //   let name = e.target.name;
+  //   dispatch(searchPost(name)).then((res) => {
+  //     if (res.payload.success) {
+  //       console.log(res);
+  //       navigate(`showevent/${name}`, { state: { infos: res.payload } });
+  //     } else {
+  //       return new Response({ error: "error!" });
+  //     }
+  //   });
+  // };
 
-  const onSearchClicked = (e) => {
-    e.preventDefault();
-    dispatch(searchPost(search)).then((res) => {
-      if (res.payload.success) {
-        console.log(res);
-        navigate(`showevent/${search}`, { state: { infos: res.payload } });
-      } else {
-        return new Response({ error: "error!" });
-      }
-    });
-  };
+  // const onSearchClicked = (e) => {
+  //   e.preventDefault();
+  //   dispatch(searchPost(search)).then((res) => {
+  //     if (res.payload.success) {
+  //       console.log(res);
+  //       navigate(`showevent/${search}`, { state: { infos: res.payload } });
+  //     } else {
+  //       return new Response({ error: "error!" });
+  //     }
+  //   });
+  // };
 
   // const onGenreClicked = (e) => {
   //   e.preventDefault();
@@ -128,7 +128,7 @@ const Sidebar = ({ onSidebarToggleButtonClicked }) => {
           <Genre_div>
             <Genre_link to="/genre/electronic">
               <Genre_item
-                onClick={onLocationClicked}
+                // onClick={onLocationClicked}
                 name="강남구"
                 value={name}
               >
