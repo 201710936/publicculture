@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { locationSearch, searchPost } from "../../../_actions/post_action";
+import { searchPost } from "../../../_actions/post_action";
 
 const Sidebar_Container = styled.div`
   font-family: "Noto Sans KR", sans-serif;
@@ -59,13 +59,18 @@ const Genre_div = styled.div`
   }
 `;
 
-const Genre_item = styled.li`
+const Genre_item = styled.button`
   margin: 5px 20px;
   list-style: circle;
   cursor: pointer;
 `;
 
-const Genre_link = styled(Link)`
+// const Genre_link = styled(Link)`
+//   text-decoration: none;
+//   color: white;
+// `;
+
+const Genre_link = styled.button`
   text-decoration: none;
   color: white;
 `;
@@ -75,15 +80,17 @@ const Sidebar = ({ onSidebarToggleButtonClicked }) => {
   const navigate = useNavigate();
   const [gumane, setGuname] = useState("");
   const [search, setSearch] = useState("");
-  const [name, setName] = useState("");
+  const [location, setLocation] = useState("");
+
+  const [test, setTest] = useState("false");
 
   // const onLocationClicked = (e) => {
   //   e.preventDefault();
-  //   let name = e.target.name;
-  //   dispatch(searchPost(name)).then((res) => {
+  //   let location = e.target.name;
+  //   dispatch(searchPost(location)).then((res) => {
   //     if (res.payload.success) {
   //       console.log(res);
-  //       navigate(`showevent/${name}`, { state: { infos: res.payload } });
+  //       navigate(`showevent/${location}`, { state: { infos: res.payload } });
   //     } else {
   //       return new Response({ error: "error!" });
   //     }
@@ -102,85 +109,73 @@ const Sidebar = ({ onSidebarToggleButtonClicked }) => {
   //   });
   // };
 
-  // const onGenreClicked = (e) => {
-  //   e.preventDefault();
-  //   let name = e.target.name;
-  //   dispatch(searchPost(name)).then((res) => {
-  //     if (res.payload.success) {
-  //       console.log(res);
-  //       navigate(`showevent/${name}`, { state: { infos: res.payload } });
-  //     }
-  //   });
-  // };
+  const onGenreClicked = (e) => {
+    e.preventDefault();
+    let name = e.target.name;
+    dispatch(searchPost(name)).then((res) => {
+      if (res.payload.success) {
+        console.log(res);
+        navigate(`showevent/${name}`, { state: { infos: res.payload } });
+      }
+    });
+  };
 
   return (
     <Sidebar_Container>
       <Sidebar_Main>
         <Sidebar_Button_Container>
-          <i
-            className="fas fa-times"
-            style={{ cursor: "pointer" }}
-            onClick={onSidebarToggleButtonClicked}
-          ></i>
+          <i className="fas fa-times" style={{ cursor: "pointer" }}></i>
         </Sidebar_Button_Container>
         <Genre_Title>지역별</Genre_Title>
         <Genre_list>
           <Genre_div>
-            <Genre_link to="/genre/electronic">
+            <Genre_link>
               <Genre_item
-                // onClick={onLocationClicked}
+                // {...(test === true ? true : false)}
+                onClick={onSidebarToggleButtonClicked}
+                // onClick={() => {
+                //   onGenreClicked();
+                //   onSidebarToggleButtonClicked();
+                // }}
                 name="강남구"
-                value={name}
               >
                 강남구
               </Genre_item>
             </Genre_link>
           </Genre_div>
           <Genre_div>
-            <Genre_link to="/showevent/disco">
-              <Genre_item onClick={onSidebarToggleButtonClicked}>
-                강동구
-              </Genre_item>
+            <Genre_link>
+              <Genre_item name="강동구">강동구</Genre_item>
             </Genre_link>
           </Genre_div>
           <Genre_div>
             <Genre_link to="/genre/jazz">
-              <Genre_item onClick={onSidebarToggleButtonClicked}>
-                강북구
-              </Genre_item>
+              <Genre_item>강북구</Genre_item>
             </Genre_link>
           </Genre_div>
           <Genre_div>
             <Genre_link to="/genre/electronic">
-              <Genre_item onClick={onSidebarToggleButtonClicked}>
-                강서구
-              </Genre_item>
+              <Genre_item>강서구</Genre_item>
             </Genre_link>
           </Genre_div>
           <Genre_div>
             <Genre_link to="/genre/pop">
-              <Genre_item onClick={onSidebarToggleButtonClicked}>
-                관악구
-              </Genre_item>
+              <Genre_item>관악구</Genre_item>
             </Genre_link>
           </Genre_div>
           <Genre_div>
             <Genre_link to="/genre/rock">
-              <Genre_item onClick={onSidebarToggleButtonClicked}>
-                광천구
-              </Genre_item>
+              <Genre_item>광천구</Genre_item>
             </Genre_link>
           </Genre_div>
           <Genre_div>
             <Genre_link to="/genre/hip-hop">
-              <Genre_item onClick={onSidebarToggleButtonClicked}>
-                구로구
-              </Genre_item>
+              <Genre_item>구로구</Genre_item>
             </Genre_link>
           </Genre_div>
         </Genre_list>
       </Sidebar_Main>
-      <Sidebar_blank onClick={onSidebarToggleButtonClicked} />
+      <Sidebar_blank />
     </Sidebar_Container>
   );
 };

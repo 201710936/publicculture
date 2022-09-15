@@ -96,6 +96,7 @@ const Header = () => {
   return (
     <>
       {CheckLogin()}
+
       {isSidebarOpened && (
         <Sidebar
           isSidebarOpened={isSidebarOpened}
