@@ -424,4 +424,75 @@ export const Page_area_info = styled.div`
   // left: 50%
   // top: 50%
   padding: 5px;
+<<<<<<< Updated upstream
+`;
+=======
+`;
+
+// password 컴포넌트
+export const Password_container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 100%;
+  margin-top: 30px;
+  font-family: "Lato", sans-serif;
+  font-weight: 1000;
+  font-size: 24px;
+`;
+
+export const Password_edit = styled.div`
+  display: flex;
+  font-size: 37px;
+  font-weight: 1200;
+  margin: 60px 0px 50px 0px;
+  background-color: white;
+  color: black;
+  padding: 5px;
+`;
+
+export const PasswordContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  //background-color: green;
+`;
+export const Password = styled.input`
+  margin-top: 10px;
+  height: 15px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  resize: none;
+  font-family: "Lato", sans-serif;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const PasswordCheck = styled.input`
+  margin-top: 10px;
+  height: 15px;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  resize: none;
+  font-family: "Lato", sans-serif;
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const PasswordCheckBtn = styled.button`
+  border: none;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 10px 0px 50px 0px;
 `;
