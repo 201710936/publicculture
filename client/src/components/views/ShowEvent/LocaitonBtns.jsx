@@ -17,12 +17,12 @@ const LocationBtns = () => {
   const infos = location.state.infos;
 
   const onLocationCliked = (e) => {
-    //e.preventDefault();
-    let guname = e.target.guname;
+    e.preventDefault();
+    let guname = e.target.value;
     dispatch(searchPost(guname)).then((res) => {
       if (res.payload.success) {
-        console.log(res.payload.posts[0].guname);
-        navigate(`${guname}`, { state: { infos: res.payload } });
+        console.log(res.payload.posts);
+        // navigate(`${guname}`, { state: { infos: res.payload } });
       }
     });
   };
@@ -30,7 +30,9 @@ const LocationBtns = () => {
   return (
     <div>
       <LocationContainer>
-        <Location_btns>강남구</Location_btns>
+        <Location_btns value="강남구" onClick={onLocationCliked}>
+          강남구
+        </Location_btns>
         <Location_btns>강동구</Location_btns>
         <Location_btns>강북구</Location_btns>
         <Location_btns>강서구</Location_btns>

@@ -15,15 +15,15 @@ import {
   Checkbox,
   CheckboxContainer,
   GENRE_BOX,
+} from "./MypageElements";
 
-} from './MypageElements';
-
-
-  useEffect(() => {
-    dispatch(auth()).then((res) => {
-      setUserData(res.payload);
-    });
-  }, [setUserData, dispatch]);
+const MypageEdit = () => {
+  const dispatch = useDispatch();
+  const [Name, setName] = useState("");
+  const [Password, setPassword] = useState("");
+  const [Genre, setGenre] = useState("");
+  const [resData, setResData] = useState(null);
+  const [userData, setUserData] = useState("");
 
   const onChangeName = (e) => {
     setName(e.target.value);
@@ -66,6 +66,23 @@ import {
     }
   };
 
+  useEffect(() => {
+    dispatch(auth())
+      .then((res) => {
+        setResData(res.payload);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (resData) {
+      setUserData(resData);
+      console.log(resData);
+    }
+  }, [resData]);
+
   return (
     <>
       <EditMypage_container>
@@ -75,7 +92,10 @@ import {
           <Nickname_container_edit>
             닉네임 변경
             <Line_edit></Line_edit>
-            <Nickname_edit onChange={onChangeName}></Nickname_edit>
+            <Nickname_edit
+              defaultValue={userData.name}
+              onChange={onChangeName}
+            ></Nickname_edit>
             <NicknameC_btn onClick={onCheckName}>confirm</NicknameC_btn>
           </Nickname_container_edit>
 

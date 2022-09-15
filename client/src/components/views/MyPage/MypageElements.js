@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 // LikePost 컴포넌트
 export const PostingContainer = styled.div`
@@ -46,7 +46,7 @@ export const MypageBox = styled.div`
   width: 100%;
   height: 100%;
   font-size: 17px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 `;
 
 export const UserBox = styled.div`
@@ -203,7 +203,7 @@ export const EditMypage_container = styled.div`
   width: 100%;
   height: 100%;
   margin-top: 30px;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: 1000;
   font-size: 24px;
 `;
@@ -234,56 +234,13 @@ export const Nickname_edit = styled.input`
   font-size: 15px;
   font-weight: 800;
   resize: none;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   &:focus {
     outline: none;
   }
 `;
 
 export const NicknameC_btn = styled.button`
-  border: none;
-  color: white;
-  background-color: black;
-  cursor: pointer;
-  font-size: 18px;
-  margin: 10px;
-`;
-
-export const PasswordContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 60px;
-  //background-color: green;
-`;
-export const Password = styled.input`
-  margin-top: 10px;
-  height: 15px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 800;
-  resize: none;
-  font-family: 'Lato', sans-serif;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const PasswordCheck = styled.input`
-  margin-top: 10px;
-  height: 15px;
-  padding: 10px;
-  font-size: 15px;
-  font-weight: 800;
-  resize: none;
-  font-family: 'Lato', sans-serif;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const PasswordCheckBtn = styled.button`
   border: none;
   color: white;
   background-color: black;
@@ -424,9 +381,6 @@ export const Page_area_info = styled.div`
   // left: 50%
   // top: 50%
   padding: 5px;
-<<<<<<< Updated upstream
-`;
-=======
 `;
 
 // password 컴포넌트
@@ -495,4 +449,28 @@ export const PasswordCheckBtn = styled.button`
   cursor: pointer;
   font-size: 18px;
   margin: 10px 0px 50px 0px;
+`;
+
+export const PasswordBox = styled.button`
+  margin: 10px 0px 0px 0px;
+  width: 200px;
+  height: 200px;
+  font-weight: 400;
+  font-size: 25px;
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    //background-color: #a9a9a9;
+    border-bottom: 4px solid white;
+  }
+`;
+
+export const PasswordIcon = styled.div`
+  margin: 0px 0px 30px 0px;
+`;
+
+export const PasswordTitle = styled.div`
+  font-weight: 400;
 `;

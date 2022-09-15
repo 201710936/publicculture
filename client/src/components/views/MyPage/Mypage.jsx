@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"; //내 액션을 한 번�
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import MypageEdit from "./MypageEdit";
+import PasswordChange from "./PasswordChange";
 import MypageInfo from "./MypageInfo";
 import MyLikedPost from "./MyLikedPost";
 import Auth from "../../../hoc/auth";
@@ -31,6 +32,9 @@ import {
   CommentIcon,
   CommentTitle,
   InfoBox,
+  PasswordBox,
+  PasswordIcon,
+  PasswordTitle,
 } from "./MypageElements";
 
 function Mypage() {
@@ -70,6 +74,8 @@ function Mypage() {
       setMode("myLikedPost");
     } else if (e.target.id === "mycomment") {
       setMode("mycomment");
+    } else if (e.target.id === "passwordChange") {
+      setMode("passwordChange");
     }
   };
 

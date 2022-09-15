@@ -57,14 +57,3 @@ export function mypageLiked() {
     payload: request,
   };
 }
-
-// location 별
-export function locationSearch(guname) {
-  const request = axios
-    .post(`/api/showevent/searchPost?search=${guname}`)
-    .then((res) => res.data);
-  return {
-    type: SEARCH_POST,
-    payload: request,
-  };
-}

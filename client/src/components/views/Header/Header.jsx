@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import Sidebar from "./Sidebar";
 import { searchPost } from "../../../_actions/post_action";
 import { logout, auth } from "../../../_actions/user_action";
 import {
@@ -13,14 +14,20 @@ import {
   GenreBar,
   GenreBtn,
   HeaderBtn,
+  SidebarButtonToggle,
+  SidebarGenreBox,
 } from "./HeaderElements";
 
-function Header() {
+const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [Login, setLogin] = useState(true);
   const [gumane, setGuname] = useState("");
+  const [isSidebarOpened, setIsSidebarOpened] = useState(false);
+  const onSidebarToggleButtonClicked = () => {
+    setIsSidebarOpened(!isSidebarOpened);
+  };
 
   const onLogoClicked = () => {
     navigate("/");
@@ -88,6 +95,12 @@ function Header() {
   return (
     <>
       {CheckLogin()}
+      {isSidebarOpened && (
+        <Sidebar
+          isSidebarOpened={isSidebarOpened}
+          onSidebarToggleButtonClicked={onSidebarToggleButtonClicked}
+        />
+      )}
       <HeaderContainer>
         <HeaderLogo type="button" onClick={onLogoClicked}>
           public culture
@@ -121,28 +134,42 @@ function Header() {
         </MenuContainer>
       </HeaderContainer>
 
-      <GenreBar>
-        <GenreBtn itemType="button" onClick={onGenreClicked} name="뮤지컬">
-          뮤지컬/오페라
-        </GenreBtn>
-        <GenreBtn itemType="button" onClick={onGenreClicked} name="전시">
-          전시/미술
-        </GenreBtn>
-        <GenreBtn itemType="button" onClick={onGenreClicked} name="연극">
-          연극
-        </GenreBtn>
-        <GenreBtn itemType="button" onClick={onGenreClicked} name="콘서트">
-          콘서트
-        </GenreBtn>
-        <GenreBtn itemType="button" onClick={onGenreClicked} name="클래식">
-          클래식
-        </GenreBtn>
-        <GenreBtn itemType="button" onClick={onGenreClicked} name="무용">
-          무용
-        </GenreBtn>
-      </GenreBar>
+      <SidebarGenreBox>
+        <SidebarButtonToggle>
+          <i
+            style={{
+              color: "black",
+              cursor: "pointer",
+              paddingLeft: "20px",
+              paddingTop: "30px",
+            }}
+            class="fa-solid fa-bars fa-2x"
+            onClick={onSidebarToggleButtonClicked}
+          ></i>
+        </SidebarButtonToggle>
+        <GenreBar>
+          <GenreBtn itemType="button" onClick={onGenreClicked} name="뮤지컬">
+            뮤지컬/오페라
+          </GenreBtn>
+          <GenreBtn itemType="button" onClick={onGenreClicked} name="전시">
+            전시/미술
+          </GenreBtn>
+          <GenreBtn itemType="button" onClick={onGenreClicked} name="연극">
+            연극
+          </GenreBtn>
+          <GenreBtn itemType="button" onClick={onGenreClicked} name="콘서트">
+            콘서트
+          </GenreBtn>
+          <GenreBtn itemType="button" onClick={onGenreClicked} name="클래식">
+            클래식
+          </GenreBtn>
+          <GenreBtn itemType="button" onClick={onGenreClicked} name="무용">
+            무용
+          </GenreBtn>
+        </GenreBar>
+      </SidebarGenreBox>
     </>
   );
-}
+};
 
 export default Header;

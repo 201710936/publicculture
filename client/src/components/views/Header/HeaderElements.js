@@ -1,6 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 //jsx 컴포넌트 만들 때, PascalCase 나 SCREAMING_SNAkE_CASE 가 규칙
+
+export const SidebarButtonToggle = styled.div`
+  //margin-left: 20px;
+`;
+
+export const SidebarGenreBox = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const MenuContainer = styled.div`
   display: flex;
   justify-content: flex-start;
@@ -20,8 +30,9 @@ export const HeaderContainer = styled.div`
 
 export const HeaderLogo = styled.div`
   display: flex;
-  justify-content : flex-start;
-  font-family: 'NG','Malgun Gothic',Dotum,'돋움',AppleGothicNeoSD,'Apple SD 산돌고딕 Neo','굴림',arial,sans-serif;
+  justify-content: flex-start;
+  font-family: "NG", "Malgun Gothic", Dotum, "돋움", AppleGothicNeoSD,
+    "Apple SD 산돌고딕 Neo", "굴림", arial, sans-serif;
   color: black;
   font-size: 60px;
   margin: 15px 5px;
@@ -38,8 +49,9 @@ export const HeaderBtn = styled.div`
   width: 80px;
   height: 50px;
   font-size: 17px;
-  font-weight : 700;
-  font-family: 'NG','Malgun Gothic',Dotum,'돋움',AppleGothicNeoSD,'Apple SD 산돌고딕 Neo','굴림',arial,sans-serif;
+  font-weight: 700;
+  font-family: "NG", "Malgun Gothic", Dotum, "돋움", AppleGothicNeoSD,
+    "Apple SD 산돌고딕 Neo", "굴림", arial, sans-serif;
   margin-left: 2px;
   cursor: pointer;
 `;
@@ -47,7 +59,7 @@ export const HeaderBtn = styled.div`
 export const GenreBar = styled.div`
   display: flex;
   height: 55px;
-  //width: 100%;
+  width: 100%;
   padding: 10px 100px;
   justify-content: space-between;
   background-color: white;
