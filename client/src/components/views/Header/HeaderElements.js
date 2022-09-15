@@ -24,6 +24,8 @@ export const HeaderContainer = styled.div`
   flex-direction: low;
   justify-content: center;
   align-items: center;
+  width: 1400px;
+  margin: 0 auto;
   height: 100px;
   background-color: white;
 `;
@@ -56,20 +58,36 @@ export const HeaderBtn = styled.div`
   cursor: pointer;
 `;
 
+export const GenreContainer = styled.div`
+  width: 100%;
+  box-shadow: 5px 5px 5px lightgray;
+
+`
+
 export const GenreBar = styled.div`
   display: flex;
+<<<<<<< HEAD
   height: 55px;
   width: 100%;
   padding: 10px 100px;
+=======
+  height: 60px;
+  width: 1400px;
+  margin: 0 auto;
+  //width: 100%;
+  padding: 20px 50px;
+>>>>>>> upstream/main
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  box-shadow: 5px 5px 5px lightgray;
+  
+  box-sizing: border-box;
 `;
 
 export const GenreBtn = styled.button`
   font-size: 18px;
   background-color: transparent;
+  padding-bottom: 10px;
   border: none;
   cursor: pointer;
   font-family: "Noto Sans KR", sans-serif;
