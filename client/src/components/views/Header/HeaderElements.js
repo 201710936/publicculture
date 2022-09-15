@@ -61,26 +61,19 @@ export const HeaderBtn = styled.div`
 export const GenreContainer = styled.div`
   width: 100%;
   box-shadow: 5px 5px 5px lightgray;
-
-`
+`;
 
 export const GenreBar = styled.div`
   display: flex;
-<<<<<<< HEAD
-  height: 55px;
-  width: 100%;
-  padding: 10px 100px;
-=======
   height: 60px;
   width: 1400px;
   margin: 0 auto;
   //width: 100%;
   padding: 20px 50px;
->>>>>>> upstream/main
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  
+
   box-sizing: border-box;
 `;
 

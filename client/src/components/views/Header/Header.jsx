@@ -134,7 +134,6 @@ const Header = () => {
           )}
         </MenuContainer>
       </HeaderContainer>
-<<<<<<< HEAD
 
       <SidebarGenreBox>
         <SidebarButtonToggle>
@@ -170,8 +169,7 @@ const Header = () => {
           </GenreBtn>
         </GenreBar>
       </SidebarGenreBox>
-=======
-      <GenreContainer>
+      {/* <GenreContainer>
         <GenreBar itemType="button" onClick={onGenreClicked}>
           <GenreBtn name="뮤지컬">뮤지컬/오페라</GenreBtn>
           <GenreBtn name="전시">전시/미술</GenreBtn>
@@ -180,8 +178,7 @@ const Header = () => {
           <GenreBtn name="클래식">클래식</GenreBtn>
           <GenreBtn name="무용">무용</GenreBtn>
         </GenreBar>
-      </GenreContainer>
->>>>>>> upstream/main
+      </GenreContainer> */}
     </>
   );
 };

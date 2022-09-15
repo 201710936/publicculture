@@ -1,13 +1,11 @@
-<<<<<<< HEAD
-import { useDispatch } from "react-redux";
 import React, { useState, useEffect } from "react";
 import { auth } from "../../../_actions/user_action";
-import { updateUser, checkName } from "../../../_actions/user_action";
-=======
-import { useDispatch } from 'react-redux';
-import React, { useState } from 'react';
-import { updateUser, updateUser_Password, checkName } from '../../../_actions/user_action';
->>>>>>> upstream/main
+import { useDispatch } from "react-redux";
+import {
+  updateUser,
+  updateUser_Password,
+  checkName,
+} from "../../../_actions/user_action";
 
 import {
   EditMypage_container,
@@ -21,18 +19,36 @@ import {
   Checkbox,
   CheckboxContainer,
   GENRE_BOX,
+  PasswordContainer,
+  PasswordCheck,
+  PasswordCheckBtn,
 } from "./MypageElements";
 
 const MypageEdit = () => {
   const dispatch = useDispatch();
   const [Name, setName] = useState("");
   const [Password, setPassword] = useState("");
+  const [PasswordConfirm, setPasswordConfirm] = useState("");
   const [Genre, setGenre] = useState("");
   const [resData, setResData] = useState(null);
   const [userData, setUserData] = useState("");
 
   const onChangeName = (e) => {
     setName(e.target.value);
+  };
+
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const onChangePasswordConfirm = (e) => {
+    setPasswordConfirm(e.target.value);
+  };
+
+  const onCheckPassword = (e) => {
+    Password === PasswordConfirm
+      ? alert("비밀번호가 일치합니다")
+      : alert("비밀번호가 일치하지 않습니다");
   };
 
   const onCheckName = async () => {
@@ -58,13 +74,8 @@ const MypageEdit = () => {
       }
     });
 
-<<<<<<< HEAD
     setName("");
     setGenre("");
-=======
-    setName('');
-    setGenre('');
->>>>>>> upstream/main
     window.location.reload();
   };
   const onUpdatePasswordConfirm = () => {
@@ -79,7 +90,7 @@ const MypageEdit = () => {
       }
     });
 
-    setPassword('');
+    setPassword("");
     window.location.reload();
   };
 
@@ -123,11 +134,7 @@ const MypageEdit = () => {
             ></Nickname_edit>
             <NicknameC_btn onClick={onCheckName}>confirm</NicknameC_btn>
           </Nickname_container_edit>
-<<<<<<< HEAD
 
-=======
-          
->>>>>>> upstream/main
           <Genre_container_edit>
             선호 장르
             <Line_edit></Line_edit>
@@ -226,10 +233,10 @@ const MypageEdit = () => {
             </PasswordCheckBtn>
           </PasswordContainer>
           <button
-            style={{ height: '50px', width: '100px' }}
+            style={{ height: "50px", width: "100px" }}
             onClick={onUpdatePasswordConfirm}
           >
-           비밀번호업데이트 따로
+            비밀번호업데이트 따로
           </button>
         </Page_area_edit>
       </EditMypage_container>
